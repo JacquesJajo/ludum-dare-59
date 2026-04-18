@@ -26,11 +26,13 @@ func start() -> void:
 	base_manager.build_list()
 	
 	for character: Character in character_list:
-		if character.is_pitcher:
+		if character.is_pitcher():
 			character.gfx.position = pitcher_plate.position
-		elif character.is_batter:
+		elif character.is_batter():
 			character.gfx.position = base_manager.bases[3]
-		else:
+		elif character.is_on_base():
+			character.gfx.position = base_manager.bases[character.initial_base_index]
+		elif character.is_fielder():
 			character.gfx.position = Vector2(randi_range(-128, 128), randi_range(-32, 32))
 		character.base_manager = base_manager
 		
@@ -66,9 +68,18 @@ func _on_target_character_selected(character: Character) -> void:
 	action_manager.execute_current()
 
 func _action_completed() -> void:
+	action_manager.action_to_execute.action_complete.disconnect(_action_completed)
 	character_index += 1
 	
 	if character_index > character_list.size() - 1:
 		character_index = 0
 		
 	action_manager.select_action(character_list[character_index])
+	
+func _run_those_on_base(user: Character) -> void:
+	for character: Character in character_list:
+		if character != user and character.is_on_base():
+			character.gfx.move_sprite(character.base_manager.bases[character.base_index + 1], 128.0)
+			character.base_index += 1
+			if character.base_index >= character.base_manager.bases.size() - 1:
+				character.base_index = -1

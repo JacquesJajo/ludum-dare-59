@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=16 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="1_woeuh"]
@@ -21,6 +21,10 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("5_kx73q")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdoy6"]
+atlas = ExtResource("5_kx73q")
+region = Rect2(96, 0, 32, 0)
+
 [node name="BaseballArena" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -28,60 +32,86 @@ texture = ExtResource("1_woeuh")
 
 [node name="CharacterManager" parent="." node_paths=PackedStringArray("ui_layer", "character_list", "action_manager", "gfx_manager", "base_manager", "pitcher_plate") instance=ExtResource("1_hv8q3")]
 ui_layer = NodePath("../UILayer")
-character_list = [NodePath("../JohnnyBaseball"), NodePath("../OtherGuy1"), NodePath("../OtherGuy2"), NodePath("../OtherGuy3")]
+character_list = [NodePath("JohnnyBaseball"), NodePath("OtherGuy1"), NodePath("OtherGuy2"), NodePath("OtherGuy3"), NodePath("Imp1"), NodePath("Imp2")]
 action_manager = NodePath("../ActionManager")
 gfx_manager = NodePath("../GFXManager")
 base_manager = NodePath("../Bases")
 pitcher_plate = NodePath("../PitcherPlate")
 
-[node name="ActionManager" parent="." node_paths=PackedStringArray("ui_layer", "gfx_manager") instance=ExtResource("2_8b67c")]
-ui_layer = NodePath("../UILayer")
-gfx_manager = NodePath("../GFXManager")
-
-[node name="JohnnyBaseball" parent="." node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+[node name="JohnnyBaseball" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
 character_name = "Johnny Baseball"
 initiative_bonus = 3
 strength = 3
 max_health = 12
 swing_bonus = 4
 armour_class = 10
-is_batter = true
-gfx = NodePath("../GFXManager/JohnnyBaseball")
+initial_base_index = -1
+state = 1
+gfx = NodePath("../../GFXManager/JohnnyBaseball")
 
-[node name="SwingAttack" parent="JohnnyBaseball" instance=ExtResource("3_h5k57")]
+[node name="SwingAttack" parent="CharacterManager/JohnnyBaseball" instance=ExtResource("3_h5k57")]
 
-[node name="HitAndRunAttack" parent="JohnnyBaseball" instance=ExtResource("4_8b67c")]
+[node name="HitAndRunAttack" parent="CharacterManager/JohnnyBaseball" instance=ExtResource("4_8b67c")]
 
-[node name="OtherGuy1" parent="." node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+[node name="OtherGuy1" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
 character_name = "OtherGuy1"
 initiative_bonus = 1
 strength = 1
 max_health = 10
 armour_class = 10
-is_pitcher = true
-gfx = NodePath("../GFXManager/OtherGuy1")
+state = 2
+gfx = NodePath("../../GFXManager/OtherGuy1")
 
-[node name="ThrowAttack" parent="OtherGuy1" instance=ExtResource("5_woeuh")]
+[node name="ThrowAttack" parent="CharacterManager/OtherGuy1" instance=ExtResource("5_woeuh")]
 
-[node name="OtherGuy2" parent="." node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+[node name="OtherGuy2" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
 character_name = "OtherGuy2"
 initiative_bonus = 1
 strength = 1
 max_health = 10
 armour_class = 10
-gfx = NodePath("../GFXManager/OtherGuy2")
+gfx = NodePath("../../GFXManager/OtherGuy2")
 
-[node name="ThrowAttack" parent="OtherGuy2" instance=ExtResource("5_woeuh")]
+[node name="ThrowAttack" parent="CharacterManager/OtherGuy2" instance=ExtResource("5_woeuh")]
 
-[node name="OtherGuy3" parent="." node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+[node name="OtherGuy3" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
 character_name = "OtherGuy3"
 initiative_bonus = 1
 strength = 1
 max_health = 10
 armour_class = 10
-gfx = NodePath("../GFXManager/OtherGuy3")
+gfx = NodePath("../../GFXManager/OtherGuy3")
 
-[node name="ThrowAttack" parent="OtherGuy3" instance=ExtResource("5_woeuh")]
+[node name="ThrowAttack" parent="CharacterManager/OtherGuy3" instance=ExtResource("5_woeuh")]
+
+[node name="Imp1" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+character_name = "Imp 1"
+initiative_bonus = 2
+strength = 3
+max_health = 11
+swing_bonus = 2
+armour_class = 12
+state = 3
+gfx = NodePath("../../GFXManager/Imp1")
+
+[node name="ThrowAttack" parent="CharacterManager/Imp1" instance=ExtResource("5_woeuh")]
+
+[node name="Imp2" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+character_name = "Imp 1"
+initiative_bonus = 2
+strength = 3
+max_health = 11
+swing_bonus = 2
+armour_class = 12
+initial_base_index = 1
+state = 3
+gfx = NodePath("../../GFXManager/Imp2")
+
+[node name="ThrowAttack" parent="CharacterManager/Imp2" instance=ExtResource("5_woeuh")]
+
+[node name="ActionManager" parent="." node_paths=PackedStringArray("ui_layer", "gfx_manager") instance=ExtResource("2_8b67c")]
+ui_layer = NodePath("../UILayer")
+gfx_manager = NodePath("../GFXManager")
 
 [node name="Bases" type="Node2D" parent="."]
 script = ExtResource("9_qrtu0")
@@ -115,8 +145,15 @@ texture = SubResource("AtlasTexture_p75ep")
 [node name="OtherGuy3" parent="GFXManager" instance=ExtResource("11_owi6g")]
 texture = SubResource("AtlasTexture_p75ep")
 
+[node name="Imp1" parent="GFXManager" instance=ExtResource("11_owi6g")]
+texture = SubResource("AtlasTexture_bdoy6")
+
+[node name="Imp2" parent="GFXManager" instance=ExtResource("11_owi6g")]
+texture = SubResource("AtlasTexture_bdoy6")
+
 [node name="UILayer" parent="." instance=ExtResource("3_jtmev")]
 
+[connection signal="affect_bases" from="CharacterManager/JohnnyBaseball/SwingAttack" to="CharacterManager" method="_run_those_on_base"]
 [connection signal="action_selected" from="ActionManager" to="CharacterManager" method="_on_action_manager_action_selected"]
 
-[editable path="JohnnyBaseball"]
+[editable path="CharacterManager/JohnnyBaseball"]

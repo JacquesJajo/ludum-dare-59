@@ -4,6 +4,13 @@ class_name Character
 
 const MAX_INITIATIVE: int = 100
 
+enum State { # I don't know anything about baseball
+	FIELDER,
+	BATTER,
+	PITCHER,
+	ON_BASE
+}
+
 @export var character_name: String
 
 @export var initiative_bonus: int
@@ -14,8 +21,9 @@ const MAX_INITIATIVE: int = 100
 @export var swing_bonus: int
 @export var armour_class: int
 
-@export var is_pitcher: bool
-@export var is_batter: bool
+@export var initial_base_index: int
+
+@export var state: State
 
 @export var gfx: CharacterSprite
 
@@ -33,10 +41,10 @@ func _ready() -> void:
 func reset():
 	health = max_health
 	magic = max_magic
-	base_index = -1
+	base_index = initial_base_index
 
 func roll_initiative():
-	if is_pitcher:
+	if state == State.PITCHER:
 		initiative = MAX_INITIATIVE
 		return
 		
@@ -52,3 +60,15 @@ func get_possible_actions() -> Array[Action]:
 			actions.append(child)
 			
 	return actions
+
+func is_pitcher() -> bool:
+	return state == State.PITCHER
+	
+func is_batter() -> bool:
+	return state == State.BATTER
+
+func is_on_base() -> bool:
+	return state == State.ON_BASE
+	
+func is_fielder() -> bool:
+	return state == State.FIELDER

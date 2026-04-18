@@ -6,7 +6,7 @@ func do_action() -> void:
 	var roll: int = randi_range(1, 20) + user.swing_bonus
 	print(roll)
 	if roll >= target.armour_class:
-		# TODO: hit roll based on swing stats
+		# TODO: more complex damage / to hit
 		target.take_damage(user.strength)
 	if roll >= CRITICAL:
 		print("critical!")
@@ -14,6 +14,7 @@ func do_action() -> void:
 	
 	user.gfx.move_complete.connect(_base_moved)
 	user.gfx.move_sprite(user.base_manager.bases[user.base_index + 1], 128.0)
+	affect_bases.emit(user)
 
 func _base_moved() -> void:
 	user.base_index += 1
@@ -27,3 +28,4 @@ func _base_moved() -> void:
 	else:
 		critical = false
 		user.gfx.call_deferred("move_sprite", user.base_manager.bases[user.base_index + 1], 128.0)
+		affect_bases.emit(user)

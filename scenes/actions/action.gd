@@ -12,6 +12,7 @@ var target: Character
 var critical: bool = false
 
 signal action_complete
+signal affect_bases(user: Character)
 
 func do_action() -> void:
 	pass
