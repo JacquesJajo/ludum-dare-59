@@ -22,6 +22,7 @@ ui_layer = NodePath("../UILayer")
 character_name = "Johnny Baseball"
 initiative_bonus = 3
 strength = 3
+max_health = 12
 
 [node name="SwingAttack" parent="JohnnyBaseball" instance=ExtResource("3_h5k57")]
 
@@ -31,6 +32,7 @@ strength = 3
 character_name = "OtherGuy1"
 initiative_bonus = 1
 strength = 1
+max_health = 10
 is_pitcher = true
 
 [node name="ThrowAttack" parent="OtherGuy1" instance=ExtResource("5_woeuh")]
@@ -39,6 +41,7 @@ is_pitcher = true
 character_name = "OtherGuy2"
 initiative_bonus = 1
 strength = 1
+max_health = 10
 
 [node name="ThrowAttack" parent="OtherGuy2" instance=ExtResource("5_woeuh")]
 
@@ -46,6 +49,7 @@ strength = 1
 character_name = "OtherGuy3"
 initiative_bonus = 1
 strength = 1
+max_health = 10
 
 [node name="ThrowAttack" parent="OtherGuy3" instance=ExtResource("5_woeuh")]
 

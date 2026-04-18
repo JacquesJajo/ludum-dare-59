@@ -1,5 +1,10 @@
-[gd_scene format=3 uid="uid://cd8c5hh37h2nv"]
+[gd_scene load_steps=2 format=3 uid="uid://cd8c5hh37h2nv"]
+
+[ext_resource type="Script" uid="uid://edsoq3tjqixb" path="res://scenes/actions/action_menu/action_menu_button.gd" id="1_85qfe"]
 
 [node name="ActionMenuButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
+script = ExtResource("1_85qfe")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

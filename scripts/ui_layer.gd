@@ -10,7 +10,7 @@ func populate_characters_label(character_list: Array[Character]):
 	
 	var i: int = 1
 	for character: Character in character_list:
-		characters_label.text += str(i) + ". " + character.character_name + " - " + str(character.initiative) + "\n"
+		characters_label.text += str(i) + ". " + character.character_name + " - " + str(character.health) + "\n"
 		i += 1
 
 func get_debug_list():
