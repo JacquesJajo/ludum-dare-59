@@ -12,6 +12,10 @@ signal action_selected(action: Action)
 var action_to_execute: Action
 
 func select_action(character: Character) -> void:
+	if character.is_npc:
+		_on_menu_action_selected(character.get_random_option())
+		return
+		
 	var instance: ActionMenu = action_menu.instantiate()
 	instance.options = character.get_possible_actions()
 	ui_layer.get_debug_list().add_child(instance)

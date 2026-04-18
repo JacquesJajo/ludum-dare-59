@@ -27,6 +27,8 @@ enum State { # I don't know anything about baseball
 
 @export var gfx: CharacterSprite
 
+@export var is_npc: bool
+
 var base_manager: BaseManager
 var base_index: int = -1
 
@@ -60,6 +62,9 @@ func get_possible_actions() -> Array[Action]:
 			actions.append(child)
 			
 	return actions
+
+func get_random_option() -> Action:
+	return get_possible_actions()[randi_range(0, get_possible_actions().size() - 1)]
 
 func is_pitcher() -> bool:
 	return state == State.PITCHER

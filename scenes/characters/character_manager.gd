@@ -63,6 +63,15 @@ func _on_action_manager_action_selected(action: Action) -> void:
 	target_list.append_array(character_list)
 	target_list.remove_at(character_index)
 	
+	if action.user.is_npc:
+		var non_npc_targets: Array[Character]
+		for character: Character in target_list:
+			if !character.is_npc:
+				non_npc_targets.append(character)
+				
+		_on_target_character_selected(non_npc_targets[randi_range(0, non_npc_targets.size() - 1)])
+		return
+	
 	var instance: CharacterMenu = character_menu.instantiate()
 	instance.options = target_list
 	ui_layer.get_debug_list().add_child(instance)
