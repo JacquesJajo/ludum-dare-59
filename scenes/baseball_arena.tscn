@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=17 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="1_woeuh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqg0g4oc7fwke" path="res://scenes/actions/hit_and_run_attack.tscn" id="4_8b67c"]
 [ext_resource type="Texture2D" uid="uid://cb07s60lb03ed" path="res://sprites/placeholders.png" id="5_kx73q"]
 [ext_resource type="PackedScene" uid="uid://dcsq7s5u5wjtb" path="res://scenes/actions/throw_attack.tscn" id="5_woeuh"]
+[ext_resource type="Script" uid="uid://bnssbpa08hulc" path="res://scripts/fielding_spots_manager.gd" id="9_bdoy6"]
 [ext_resource type="Script" uid="uid://2tk6o53m72bd" path="res://scenes/base_manager.gd" id="9_qrtu0"]
 [ext_resource type="PackedScene" uid="uid://bgpecv6xp6537" path="res://scenes/gfx_manager.tscn" id="10_p75ep"]
 [ext_resource type="PackedScene" uid="uid://woop0y3j8ulp" path="res://scenes/character_sprite.tscn" id="11_owi6g"]
@@ -30,13 +31,14 @@ region = Rect2(96, 0, 32, 0)
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_woeuh")
 
-[node name="CharacterManager" parent="." node_paths=PackedStringArray("ui_layer", "character_list", "action_manager", "gfx_manager", "base_manager", "pitcher_plate") instance=ExtResource("1_hv8q3")]
+[node name="CharacterManager" parent="." node_paths=PackedStringArray("ui_layer", "character_list", "action_manager", "gfx_manager", "base_manager", "pitcher_plate", "fielding_spots_manager") instance=ExtResource("1_hv8q3")]
 ui_layer = NodePath("../UILayer")
 character_list = [NodePath("JohnnyBaseball"), NodePath("OtherGuy1"), NodePath("OtherGuy2"), NodePath("OtherGuy3"), NodePath("Imp1"), NodePath("Imp2")]
 action_manager = NodePath("../ActionManager")
 gfx_manager = NodePath("../GFXManager")
 base_manager = NodePath("../Bases")
 pitcher_plate = NodePath("../PitcherPlate")
+fielding_spots_manager = NodePath("../FieldingSpots")
 
 [node name="JohnnyBaseball" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
 character_name = "Johnny Baseball"
@@ -130,6 +132,15 @@ position = Vector2(32, 135)
 
 [node name="PitcherPlate" type="Node2D" parent="."]
 position = Vector2(0, 50)
+
+[node name="FieldingSpots" type="Node2D" parent="."]
+script = ExtResource("9_bdoy6")
+
+[node name="FieldingSpot1" type="Node2D" parent="FieldingSpots"]
+position = Vector2(-128, 0)
+
+[node name="FieldingSpot2" type="Node2D" parent="FieldingSpots"]
+position = Vector2(128, 0)
 
 [node name="GFXManager" parent="." instance=ExtResource("10_p75ep")]
 

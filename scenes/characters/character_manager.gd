@@ -12,6 +12,7 @@ const character_menu: PackedScene = preload("res://scenes/characters/character_m
 
 @export var base_manager: BaseManager
 @export var pitcher_plate: Node2D
+@export var fielding_spots_manager: FieldingSpotsManager
 
 var character_index: int = 0
 
@@ -24,6 +25,8 @@ func _process(delta: float) -> void:
 func start() -> void:
 	character_index = 0
 	base_manager.build_list()
+	fielding_spots_manager.build_list()
+	var fielder_count: int = 0
 	
 	for character: Character in character_list:
 		if character.is_pitcher():
@@ -33,7 +36,11 @@ func start() -> void:
 		elif character.is_on_base():
 			character.gfx.position = base_manager.bases[character.initial_base_index]
 		elif character.is_fielder():
-			character.gfx.position = Vector2(randi_range(-128, 128), randi_range(-32, 32))
+			if fielder_count % 2 == 0: # may change this its a bit ugly
+				character.gfx.position = fielding_spots_manager.spots[0]
+			else:
+				character.gfx.position = fielding_spots_manager.spots[1]
+			fielder_count += 1
 		character.base_manager = base_manager
 		
 		character.roll_initiative()
