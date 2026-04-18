@@ -7,6 +7,8 @@ class_name Action
 var user: Character
 var target: Character
 
+signal action_complete
+
 func do_action() -> void:
 	pass
 

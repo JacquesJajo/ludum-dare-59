@@ -7,6 +7,7 @@ const action_menu: PackedScene = preload("res://scenes/actions/action_menu/actio
 signal action_selected(action: Action)
 
 @export var ui_layer: UILayer
+@export var gfx_manager: GFXManager
 
 var action_to_execute: Action
 

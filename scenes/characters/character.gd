@@ -12,6 +12,12 @@ const MAX_INITIATIVE: int = 100
 @export var max_health: int
 
 @export var is_pitcher: bool
+@export var is_batter: bool
+
+@export var gfx: CharacterSprite
+
+var base_manager: BaseManager
+var base_index: int = -1
 
 var initiative: int
 
@@ -24,6 +30,7 @@ func _ready() -> void:
 func reset():
 	health = max_health
 	magic = max_magic
+	base_index = -1
 
 func roll_initiative():
 	if is_pitcher:

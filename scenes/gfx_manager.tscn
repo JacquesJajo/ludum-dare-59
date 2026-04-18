@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgpecv6xp6537"]
+
+[ext_resource type="Script" uid="uid://vtejglvekq3k" path="res://scripts/gfx_manager.gd" id="1_tb5fv"]
+
+[node name="GFXManager" type="Node2D"]
+script = ExtResource("1_tb5fv")

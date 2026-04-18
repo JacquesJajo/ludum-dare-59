@@ -8,6 +8,10 @@ const character_menu: PackedScene = preload("res://scenes/characters/character_m
 @export var character_list: Array[Character]
 
 @export var action_manager: ActionManager
+@export var gfx_manager: GFXManager
+
+@export var base_manager: BaseManager
+@export var pitcher_plate: Node2D
 
 var character_index: int = 0
 
@@ -19,13 +23,20 @@ func _process(delta: float) -> void:
 
 func start() -> void:
 	character_index = 0
+	base_manager.build_list()
+	
 	for character: Character in character_list:
+		if character.is_pitcher:
+			character.gfx.position = pitcher_plate.position
+		elif character.is_batter:
+			character.gfx.position = base_manager.bases[3]
+		else:
+			character.gfx.position = Vector2(randi_range(-128, 128), randi_range(-32, 32))
+		character.base_manager = base_manager
+		
 		character.roll_initiative()
 	
 	character_list.sort_custom(sort_initiative_desc)
-	
-	for character: Character in character_list:
-		print(character.character_name, ", ", character.initiative)
 		
 	action_manager.select_action(character_list[character_index])
 
@@ -51,8 +62,10 @@ func _on_action_manager_action_selected(action: Action) -> void:
 	
 func _on_target_character_selected(character: Character) -> void:
 	action_manager.action_to_execute.target = character
+	action_manager.action_to_execute.action_complete.connect(_action_completed)
 	action_manager.execute_current()
-	
+
+func _action_completed() -> void:
 	character_index += 1
 	
 	if character_index > character_list.size() - 1:
