@@ -43,6 +43,8 @@ character_name = "Johnny Baseball"
 initiative_bonus = 3
 strength = 3
 max_health = 12
+swing_bonus = 4
+armour_class = 10
 is_batter = true
 gfx = NodePath("../GFXManager/JohnnyBaseball")
 
@@ -55,6 +57,7 @@ character_name = "OtherGuy1"
 initiative_bonus = 1
 strength = 1
 max_health = 10
+armour_class = 10
 is_pitcher = true
 gfx = NodePath("../GFXManager/OtherGuy1")
 
@@ -65,6 +68,7 @@ character_name = "OtherGuy2"
 initiative_bonus = 1
 strength = 1
 max_health = 10
+armour_class = 10
 gfx = NodePath("../GFXManager/OtherGuy2")
 
 [node name="ThrowAttack" parent="OtherGuy2" instance=ExtResource("5_woeuh")]
@@ -74,6 +78,7 @@ character_name = "OtherGuy3"
 initiative_bonus = 1
 strength = 1
 max_health = 10
+armour_class = 10
 gfx = NodePath("../GFXManager/OtherGuy3")
 
 [node name="ThrowAttack" parent="OtherGuy3" instance=ExtResource("5_woeuh")]

@@ -11,6 +11,9 @@ const MAX_INITIATIVE: int = 100
 @export var max_magic: int
 @export var max_health: int
 
+@export var swing_bonus: int
+@export var armour_class: int
+
 @export var is_pitcher: bool
 @export var is_batter: bool
 
