@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcsq7s5u5wjtb"]
+
+[ext_resource type="PackedScene" uid="uid://3kundwbkrnh2" path="res://scenes/actions/action.tscn" id="1_ten0h"]
+[ext_resource type="Script" uid="uid://0t57yd0icj8b" path="res://scenes/actions/throw_attack.gd" id="2_p5cis"]
+
+[node name="ThrowAttack" instance=ExtResource("1_ten0h")]
+script = ExtResource("2_p5cis")
+action_name = "Throw Attack"

@@ -11,8 +11,20 @@ config_version=5
 [application]
 
 config/name="Ludum Dare 59"
+run/main_scene="uid://cdq8m7w8oscci"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=3
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://bllj6pca7eua3"
 
 [rendering]
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdrc7m04ob1a6"]
+
+[ext_resource type="Script" uid="uid://dvd05uyjmb5sg" path="res://scenes/actions/action_manager.gd" id="1_phokd"]
+
+[node name="ActionManager" type="Node2D"]
+script = ExtResource("1_phokd")

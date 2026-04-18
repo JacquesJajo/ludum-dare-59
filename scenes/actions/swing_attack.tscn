@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bthtlrcdwhbih"]
+
+[ext_resource type="PackedScene" uid="uid://3kundwbkrnh2" path="res://scenes/actions/action.tscn" id="1_cywri"]
+[ext_resource type="Script" uid="uid://63g4rydiqg5x" path="res://scenes/actions/swing_attack.gd" id="2_05uvf"]
+
+[node name="SwingAttack" instance=ExtResource("1_cywri")]
+script = ExtResource("2_05uvf")
+action_name = "Swing Attack"

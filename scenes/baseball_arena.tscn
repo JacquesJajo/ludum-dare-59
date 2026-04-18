@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://c14sp0441q430"]
+
+[ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
+[ext_resource type="PackedScene" uid="uid://cdrc7m04ob1a6" path="res://scenes/actions/action_manager.tscn" id="2_8b67c"]
+[ext_resource type="PackedScene" uid="uid://cyrxfrva0371v" path="res://scenes/characters/character.tscn" id="2_jtmev"]
+[ext_resource type="PackedScene" uid="uid://bthtlrcdwhbih" path="res://scenes/actions/swing_attack.tscn" id="3_h5k57"]
+[ext_resource type="PackedScene" uid="uid://7d8qn33nbseh" path="res://scenes/ui_layer.tscn" id="3_jtmev"]
+[ext_resource type="PackedScene" uid="uid://dqg0g4oc7fwke" path="res://scenes/actions/hit_and_run_attack.tscn" id="4_8b67c"]
+[ext_resource type="PackedScene" uid="uid://dcsq7s5u5wjtb" path="res://scenes/actions/throw_attack.tscn" id="5_woeuh"]
+
+[node name="BaseballArena" type="Node2D"]
+
+[node name="CharacterManager" parent="." node_paths=PackedStringArray("ui_layer", "character_list", "action_manager") instance=ExtResource("1_hv8q3")]
+ui_layer = NodePath("../UILayer")
+character_list = [NodePath("../JohnnyBaseball"), NodePath("../OtherGuy1"), NodePath("../OtherGuy2"), NodePath("../OtherGuy3")]
+action_manager = NodePath("../ActionManager")
+
+[node name="ActionManager" parent="." node_paths=PackedStringArray("ui_layer") instance=ExtResource("2_8b67c")]
+ui_layer = NodePath("../UILayer")
+
+[node name="JohnnyBaseball" parent="." instance=ExtResource("2_jtmev")]
+character_name = "Johnny Baseball"
+initiative_bonus = 3
+strength = 3
+
+[node name="SwingAttack" parent="JohnnyBaseball" instance=ExtResource("3_h5k57")]
+
+[node name="HitAndRunAttack" parent="JohnnyBaseball" instance=ExtResource("4_8b67c")]
+
+[node name="OtherGuy1" parent="." instance=ExtResource("2_jtmev")]
+character_name = "OtherGuy1"
+initiative_bonus = 1
+strength = 1
+is_pitcher = true
+
+[node name="ThrowAttack" parent="OtherGuy1" instance=ExtResource("5_woeuh")]
+
+[node name="OtherGuy2" parent="." instance=ExtResource("2_jtmev")]
+character_name = "OtherGuy2"
+initiative_bonus = 1
+strength = 1
+
+[node name="ThrowAttack" parent="OtherGuy2" instance=ExtResource("5_woeuh")]
+
+[node name="OtherGuy3" parent="." instance=ExtResource("2_jtmev")]
+character_name = "OtherGuy3"
+initiative_bonus = 1
+strength = 1
+
+[node name="ThrowAttack" parent="OtherGuy3" instance=ExtResource("5_woeuh")]
+
+[node name="UILayer" parent="." instance=ExtResource("3_jtmev")]
+
+[connection signal="action_selected" from="ActionManager" to="CharacterManager" method="_on_action_manager_action_selected"]

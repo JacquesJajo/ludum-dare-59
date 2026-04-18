@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqg0g4oc7fwke"]
+
+[ext_resource type="PackedScene" uid="uid://3kundwbkrnh2" path="res://scenes/actions/action.tscn" id="1_lakl6"]
+[ext_resource type="Script" uid="uid://d0gwo4jps2xa" path="res://scenes/actions/hit_and_run_attack.gd" id="2_la8iq"]
+
+[node name="HitAndRunAttack" instance=ExtResource("1_lakl6")]
+script = ExtResource("2_la8iq")
+action_name = "Hit And Run"

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cd8c5hh37h2nv"]
+
+[node name="ActionMenuButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0

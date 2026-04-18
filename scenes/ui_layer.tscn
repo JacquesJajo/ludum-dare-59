@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://7d8qn33nbseh"]
+
+[ext_resource type="Script" uid="uid://c1gew044mb5g" path="res://scripts/ui_layer.gd" id="1_w83ab"]
+
+[node name="UILayer" type="CanvasLayer"]
+script = ExtResource("1_w83ab")
+
+[node name="DebugList" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Characters" type="Label" parent="DebugList"]
+layout_mode = 2
+text = "Characters:
+1.
+2.
+3.
+4."
