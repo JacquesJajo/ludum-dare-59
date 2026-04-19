@@ -34,6 +34,7 @@ func _message_shown() -> void:
 	# and apply buffs then play user animations
 	user.ally_buffs.clear()
 	
+	user.character_manager.sound_manager.get_hit_ball().play()
 	user.gfx.play("swing")
 	user.gfx.animation_finished.connect(_swing_finished)
 

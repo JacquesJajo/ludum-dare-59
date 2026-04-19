@@ -35,7 +35,7 @@ script = ExtResource("2_7pq1s")
 scene = ExtResource("5_atcx3")
 overrides = {
 "box_distance": "271.0",
-"box_modulate_custom_color": "Color(0.0588235, 0.0392157, 0.352941, 0.784314)",
+"box_modulate_custom_color": "Color(0.0588235, 0.0392157, 0.352941, 0.941176)",
 "box_modulate_global_color": "false",
 "box_size": "Vector2(600, 64)",
 "name_label_hide_when_no_character": "true",

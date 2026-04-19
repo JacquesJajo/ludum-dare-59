@@ -9,7 +9,7 @@
 character_name = "Pink Demon 1"
 initiative_bonus = 2
 strength = 2
-max_health = 14
+max_health = 10
 
 [node name="OtherGuy1" parent="GFXManager" index="1"]
 sprite_frames = ExtResource("2_c0nam")

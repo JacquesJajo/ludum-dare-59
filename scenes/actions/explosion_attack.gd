@@ -11,6 +11,8 @@ var explosion_instance: Explosion
 func modify_baseball() -> void:
 	potential_hits = user.character_manager.get_npc_list()
 	
+	user.character_manager.sound_manager.get_explosion().play()
+	
 	explosion_instance = explosion.instantiate()
 	explosion_instance.max_radius = buff_level + 1.0
 	

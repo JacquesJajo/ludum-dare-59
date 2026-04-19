@@ -22,9 +22,14 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"johnny_baseball": "res://dialogue/johnny_baseball.dch"
+"johnny_baseball": "res://dialogue/johnny_baseball.dch",
+"saurkraut": "res://dialogue/saurkraut.dch",
+"sourdough": "res://dialogue/sourdough.dch"
 }
 directories/dtl_directory={
+"cutscene_2": "res://dialogue/cutscene_2.dtl",
+"cutscene_3": "res://dialogue/cutscene_3.dtl",
+"cutscene_4": "res://dialogue/cutscene_4.dtl",
 "intro": "res://dialogue/intro.dtl",
 "test_timeline": "res://dialogue/test_timeline.dtl"
 }

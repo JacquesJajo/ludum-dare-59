@@ -14,6 +14,8 @@ const character_menu: PackedScene = preload("res://scenes/characters/character_m
 @export var pitcher_plate: Node2D
 @export var fielding_spots_manager: FieldingSpotsManager
 
+@export var sound_manager: SoundManager
+
 var character_index: int = 0
 
 signal player_defeat_signal
@@ -123,14 +125,18 @@ func _action_completed() -> void:
 			character_index = 0
 	
 	if player_victory():
-		print("win!")
-		player_victory_signal.emit()
+		sound_manager.get_victory().finished.connect(_victory_audio_finished)
+		sound_manager.get_victory().play()
 	elif player_defeat():
-		print("defeat!")
+		sound_manager.get_defeat().play()
 		player_defeat_signal.emit()
 	else:
 		action_manager.select_action(character_list[character_index])
-	
+
+func _victory_audio_finished() -> void:
+	sound_manager.get_victory().finished.disconnect(_victory_audio_finished)
+	player_victory_signal.emit()
+
 func _run_those_on_base(user: Character) -> void:
 	for character: Character in character_list:
 		if character != user and character.is_on_base():

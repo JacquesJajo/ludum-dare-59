@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdq8m7w8oscci"]
+[gd_scene load_steps=4 format=3 uid="uid://cdq8m7w8oscci"]
 
 [ext_resource type="Script" uid="uid://caqi26nkt2qgs" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://b1drywiae88gc" path="res://scenes/titlescreen.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -9,4 +10,9 @@ script = ExtResource("1_yqjtg")
 [node name="MainCamera" type="Camera2D" parent="."]
 
 [node name="CutsceneBackground1" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_lnu2h")
+
+[node name="Titlescreen" parent="." instance=ExtResource("3_lnu2h")]
+
+[connection signal="start_game" from="Titlescreen" to="." method="_on_titlescreen_start_game"]

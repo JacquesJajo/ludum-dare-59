@@ -9,6 +9,7 @@ const THROW_SPEED: float = 256.0
 var baseball_instance: Baseball
 
 func do_action() -> void:
+	user.character_manager.sound_manager.get_throw_ball().play()
 	user.gfx.play("attack")
 	user.gfx.animation_finished.connect(_on_attack_animation_finished)
 

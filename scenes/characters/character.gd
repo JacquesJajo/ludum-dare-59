@@ -73,6 +73,8 @@ func roll_initiative():
 func take_damage(damage: int):
 	health -= damage
 	
+	character_manager.sound_manager.get_hurt().play()
+	
 	if health <= 0:
 		health = 0
 		gfx.hide()

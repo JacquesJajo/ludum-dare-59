@@ -10,19 +10,19 @@
 character_name = "Green Demon 1"
 initiative_bonus = 4
 strength = 4
-max_health = 16
+max_health = 14
 
 [node name="RedDemon2" parent="CharacterManager" index="3"]
 character_name = "Pink Demon 2"
 initiative_bonus = 2
 strength = 2
-max_health = 14
+max_health = 10
 
 [node name="RedDemon3" parent="CharacterManager" index="4"]
 character_name = "Pink Demon 3"
 initiative_bonus = 2
 strength = 2
-max_health = 14
+max_health = 10
 
 [node name="OtherGuy1" parent="GFXManager" index="1"]
 sprite_frames = ExtResource("2_n4yxd")

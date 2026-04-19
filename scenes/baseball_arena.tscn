@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=33 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
 [ext_resource type="Script" uid="uid://66yy3cyhaw5h" path="res://scripts/baseball_arena.gd" id="1_lwfa2"]
@@ -18,6 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://cfp7eepee84os" path="res://sprites/spritesheet.png" id="12_jjdn4"]
 [ext_resource type="SpriteFrames" uid="uid://7wbxsrc6y3lo" path="res://sprites/demon.tres" id="13_jjdn4"]
 [ext_resource type="SpriteFrames" uid="uid://dniumek475uta" path="res://sprites/imp.tres" id="14_w5lw3"]
+[ext_resource type="Script" uid="uid://cswpgnefll3bb" path="res://scripts/sounds.gd" id="19_hgvjh"]
+[ext_resource type="AudioStream" uid="uid://421qp5hutmc7" path="res://audio/Explosion.wav" id="20_hemy8"]
+[ext_resource type="AudioStream" uid="uid://bsm0gypti3j3d" path="res://audio/HitBall.wav" id="21_0djdn"]
+[ext_resource type="AudioStream" uid="uid://j818n2ghsucs" path="res://audio/Hurt.wav" id="22_cmq4y"]
+[ext_resource type="AudioStream" uid="uid://bd6rp3hxyxxh1" path="res://audio/ThrowBall.wav" id="23_1sgly"]
+[ext_resource type="AudioStream" uid="uid://cgvfv3cmmqorp" path="res://audio/Victory.wav" id="24_h52rh"]
+[ext_resource type="AudioStream" uid="uid://dkatm5fefmcon" path="res://audio/Defeat.wav" id="25_3yh0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdoy6"]
 atlas = ExtResource("12_jjdn4")
@@ -80,7 +87,7 @@ script = ExtResource("1_lwfa2")
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_woeuh")
 
-[node name="CharacterManager" parent="." node_paths=PackedStringArray("ui_layer", "character_list", "action_manager", "gfx_manager", "base_manager", "pitcher_plate", "fielding_spots_manager") instance=ExtResource("1_hv8q3")]
+[node name="CharacterManager" parent="." node_paths=PackedStringArray("ui_layer", "character_list", "action_manager", "gfx_manager", "base_manager", "pitcher_plate", "fielding_spots_manager", "sound_manager") instance=ExtResource("1_hv8q3")]
 ui_layer = NodePath("../UILayer")
 character_list = [NodePath("JohnnyBaseball"), NodePath("RedDemon1"), NodePath("RedDemon2"), NodePath("RedDemon3"), NodePath("Saurkraut"), NodePath("Sourdough")]
 action_manager = NodePath("../ActionManager")
@@ -88,6 +95,7 @@ gfx_manager = NodePath("../GFXManager")
 base_manager = NodePath("../Bases")
 pitcher_plate = NodePath("../PitcherPlate")
 fielding_spots_manager = NodePath("../FieldingSpots")
+sound_manager = NodePath("../Sounds")
 
 [node name="JohnnyBaseball" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
 character_name = "Johnny Baseball"
@@ -109,7 +117,7 @@ action_name = "Explosive Swing"
 character_name = "Red Demon 1"
 initiative_bonus = 1
 strength = 1
-max_health = 10
+max_health = 8
 armour_class = 10
 state = 2
 gfx = NodePath("../../GFXManager/OtherGuy1")
@@ -121,7 +129,7 @@ is_npc = true
 character_name = "Red Demon 2"
 initiative_bonus = 1
 strength = 1
-max_health = 10
+max_health = 8
 armour_class = 10
 gfx = NodePath("../../GFXManager/OtherGuy2")
 is_npc = true
@@ -132,7 +140,7 @@ is_npc = true
 character_name = "Red Demon 3"
 initiative_bonus = 1
 strength = 1
-max_health = 10
+max_health = 8
 armour_class = 10
 gfx = NodePath("../../GFXManager/OtherGuy3")
 is_npc = true
@@ -242,6 +250,27 @@ animation = &"default"
 autoplay = "default"
 
 [node name="UILayer" parent="." instance=ExtResource("3_jtmev")]
+
+[node name="Sounds" type="Node2D" parent="."]
+script = ExtResource("19_hgvjh")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("20_hemy8")
+
+[node name="HitBall" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("21_0djdn")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("22_cmq4y")
+
+[node name="ThrowBall" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("23_1sgly")
+
+[node name="Victory" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("24_h52rh")
+
+[node name="Defeat" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("25_3yh0f")
 
 [connection signal="player_defeat_signal" from="CharacterManager" to="." method="_on_player_defeat"]
 [connection signal="player_victory_signal" from="CharacterManager" to="." method="_on_player_victory"]
