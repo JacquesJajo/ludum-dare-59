@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 class_name CharacterSprite
 
@@ -9,12 +9,19 @@ enum State {
 
 signal move_complete
 
+@export var face_centre: bool = true
+
 var state: State = State.IDLE
 
 var target: Vector2
 var speed: float
 
 func _process(delta: float) -> void:
+	if position.x > 0.0:
+		flip_h = true
+	else:
+		flip_h = false
+	
 	match state:
 		State.IDLE:
 			pass

@@ -2,5 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cbglt54m8s57b" path="res://scripts/character_sprite.gd" id="1_k8qwi"]
 
-[node name="CharacterSprite" type="Sprite2D"]
+[node name="CharacterSprite" type="AnimatedSprite2D"]
+animation = &""
 script = ExtResource("1_k8qwi")

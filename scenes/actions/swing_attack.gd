@@ -12,6 +12,13 @@ func do_action() -> void:
 		print("critical!")
 		critical = true
 	
+	user.gfx.play("swing")
+	user.gfx.animation_finished.connect(_swing_finished)
+
+func _swing_finished() -> void:
+	user.gfx.animation_finished.disconnect(_swing_finished)
+	user.gfx.play("default")
+	
 	user.gfx.move_complete.connect(_base_moved)
 	user.gfx.move_sprite(user.base_manager.bases[user.base_index + 1], 128.0)
 	affect_bases.emit(user)
