@@ -19,6 +19,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gx2rp")
 }],
+"loop": false,
+"name": &"attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek2gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx2rp")
+}],
 "loop": true,
 "name": &"default",
 "speed": 2.0

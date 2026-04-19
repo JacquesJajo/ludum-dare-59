@@ -2,9 +2,9 @@ extends Node2D
 
 class_name GFXManager
 
-var sprites: Array[Sprite2D]
+var sprites: Array[AnimatedSprite2D]
 
-func _ready() -> void:
+func build_list() -> void:
 	for child in get_children():
-		if child is Sprite2D:
+		if child is AnimatedSprite2D:
 			sprites.append(child)

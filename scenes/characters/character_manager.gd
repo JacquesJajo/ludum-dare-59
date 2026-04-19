@@ -26,6 +26,7 @@ func start() -> void:
 	character_index = 0
 	base_manager.build_list()
 	fielding_spots_manager.build_list()
+	gfx_manager.build_list()
 	var fielder_count: int = 0
 	
 	for character: Character in character_list:
@@ -46,8 +47,8 @@ func start() -> void:
 		character.roll_initiative()
 	
 	character_list.sort_custom(sort_initiative_desc)
-		
-	action_manager.select_action(character_list[character_index])
+
+	$StartTimer.start()
 
 func sort_initiative_desc(a: Character, b: Character) -> bool:
 	if a.initiative < b.initiative:
@@ -99,3 +100,7 @@ func _run_those_on_base(user: Character) -> void:
 			character.base_index += 1
 			if character.base_index >= character.base_manager.bases.size() - 1:
 				character.base_index = -1
+
+
+func _on_start_timer_timeout() -> void:
+	action_manager.select_action(character_list[character_index])

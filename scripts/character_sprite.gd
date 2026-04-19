@@ -17,7 +17,7 @@ var target: Vector2
 var speed: float
 
 func _process(delta: float) -> void:
-	if position.x > 0.0:
+	if position.x > 0.0 and face_centre:
 		flip_h = true
 	else:
 		flip_h = false

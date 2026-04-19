@@ -4,3 +4,9 @@
 
 [node name="CharacterManager" type="Node2D"]
 script = ExtResource("1_m1d8m")
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=23 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="1_woeuh"]
@@ -36,6 +36,10 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("12_jjdn4")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7fmd"]
+atlas = ExtResource("12_jjdn4")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jjdn4"]
 animations = [{
 "frames": [{
@@ -58,10 +62,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hnbne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7fmd")
 }],
 "loop": false,
 "name": &"swing",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [node name="BaseballArena" type="Node2D"]
@@ -187,17 +194,19 @@ position = Vector2(128, 0)
 
 [node name="JohnnyBaseball" parent="GFXManager" instance=ExtResource("11_owi6g")]
 sprite_frames = SubResource("SpriteFrames_jjdn4")
-animation = &"default"
+animation = &"swing"
 autoplay = "default"
 
 [node name="OtherGuy1" parent="GFXManager" instance=ExtResource("11_owi6g")]
 sprite_frames = ExtResource("13_jjdn4")
-animation = &"default"
+animation = &"attack"
 autoplay = "default"
+frame = 5
+frame_progress = 1.0
 
 [node name="OtherGuy2" parent="GFXManager" instance=ExtResource("11_owi6g")]
 sprite_frames = ExtResource("13_jjdn4")
-animation = &"default"
+animation = &"attack"
 autoplay = "default"
 
 [node name="OtherGuy3" parent="GFXManager" instance=ExtResource("11_owi6g")]
@@ -207,9 +216,8 @@ autoplay = "default"
 
 [node name="Imp1" parent="GFXManager" instance=ExtResource("11_owi6g")]
 sprite_frames = ExtResource("14_w5lw3")
-animation = &"default"
+animation = &"attack"
 autoplay = "default"
-frame_progress = 0.322832
 
 [node name="Imp2" parent="GFXManager" instance=ExtResource("11_owi6g")]
 sprite_frames = ExtResource("14_w5lw3")
