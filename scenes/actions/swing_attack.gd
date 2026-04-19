@@ -3,10 +3,13 @@ extends Action
 class_name SwingAttack
 
 const SWING_SPEED: float = 512.0
+var speed_modifier: float = 1.0
 
 var saved_baseball: Baseball
 
 var buff_level: int
+
+var active_processing: bool = false
 
 func do_action() -> void:
 	buff_level = 0
@@ -39,8 +42,9 @@ func _swing_finished() -> void:
 	saved_baseball = user.baseball_list.pop_front()
 	user.clear_baseball_list()
 	
+	modify_baseball()
 	saved_baseball.move_complete.connect(_baseball_swung_back)
-	saved_baseball.move_sprite(target.gfx.global_position, SWING_SPEED)
+	saved_baseball.move_sprite(target.gfx.global_position, SWING_SPEED * speed_modifier)
 
 func modify_baseball() -> void:
 	pass

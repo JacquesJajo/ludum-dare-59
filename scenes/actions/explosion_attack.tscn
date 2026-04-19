@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://qoq40jh2heea"]
+
+[ext_resource type="PackedScene" uid="uid://bthtlrcdwhbih" path="res://scenes/actions/swing_attack.tscn" id="1_4axvy"]
+[ext_resource type="Script" uid="uid://ftc5elfkwv8f" path="res://scenes/actions/explosion_attack.gd" id="2_abdd8"]
+
+[node name="ExplosionAttack" instance=ExtResource("1_4axvy")]
+script = ExtResource("2_abdd8")
