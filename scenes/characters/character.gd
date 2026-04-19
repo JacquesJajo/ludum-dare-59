@@ -15,6 +15,7 @@ enum State { # I don't know anything about baseball
 
 @export var initiative_bonus: int
 @export var strength: int
+@export var heal: int
 @export var max_magic: int
 @export var max_health: int
 

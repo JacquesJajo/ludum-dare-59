@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=25 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="1_woeuh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqg0g4oc7fwke" path="res://scenes/actions/hit_and_run_attack.tscn" id="4_8b67c"]
 [ext_resource type="PackedScene" uid="uid://dcsq7s5u5wjtb" path="res://scenes/actions/throw_attack.tscn" id="5_woeuh"]
 [ext_resource type="PackedScene" uid="uid://ds7wsmky4owjy" path="res://scenes/actions/await_signal.tscn" id="7_cbia7"]
+[ext_resource type="PackedScene" uid="uid://7oecrvgo1kij" path="res://scenes/actions/heal.tscn" id="8_hnbne"]
 [ext_resource type="Script" uid="uid://bnssbpa08hulc" path="res://scripts/fielding_spots_manager.gd" id="9_bdoy6"]
 [ext_resource type="Script" uid="uid://2tk6o53m72bd" path="res://scenes/base_manager.gd" id="9_qrtu0"]
 [ext_resource type="PackedScene" uid="uid://bgpecv6xp6537" path="res://scenes/gfx_manager.tscn" id="10_p75ep"]
@@ -139,6 +140,7 @@ is_npc = true
 character_name = "Imp 1"
 initiative_bonus = 2
 strength = 3
+heal = 3
 max_health = 11
 swing_bonus = 2
 armour_class = 12
@@ -149,10 +151,13 @@ ally_to_buff = NodePath("../JohnnyBaseball")
 [node name="AwaitSignal" parent="CharacterManager/Imp1" node_paths=PackedStringArray("ui_layer") instance=ExtResource("7_cbia7")]
 ui_layer = NodePath("../../../UILayer")
 
+[node name="Heal" parent="CharacterManager/Imp1" instance=ExtResource("8_hnbne")]
+
 [node name="Imp2" parent="CharacterManager" node_paths=PackedStringArray("gfx", "ally_to_buff") instance=ExtResource("2_jtmev")]
 character_name = "Imp 2"
 initiative_bonus = 2
 strength = 3
+heal = 3
 max_health = 11
 swing_bonus = 2
 armour_class = 12
@@ -163,6 +168,8 @@ ally_to_buff = NodePath("../JohnnyBaseball")
 
 [node name="AwaitSignal" parent="CharacterManager/Imp2" node_paths=PackedStringArray("ui_layer") instance=ExtResource("7_cbia7")]
 ui_layer = NodePath("../../../UILayer")
+
+[node name="Heal" parent="CharacterManager/Imp2" instance=ExtResource("8_hnbne")]
 
 [node name="ActionManager" parent="." node_paths=PackedStringArray("ui_layer", "gfx_manager") instance=ExtResource("2_8b67c")]
 ui_layer = NodePath("../UILayer")
