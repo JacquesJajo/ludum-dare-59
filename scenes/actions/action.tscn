@@ -4,3 +4,9 @@
 
 [node name="Action" type="Node2D"]
 script = ExtResource("1_63j6a")
+
+[node name="DialogueTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="DialogueTimer" to="." method="_on_dialogue_timer_timeout"]
