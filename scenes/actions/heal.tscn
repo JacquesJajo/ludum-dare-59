@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://7oecrvgo1kij"]
+
+[ext_resource type="PackedScene" uid="uid://3kundwbkrnh2" path="res://scenes/actions/action.tscn" id="1_eue4y"]
+[ext_resource type="Script" uid="uid://ce36pqum6xvdh" path="res://scenes/actions/heal.gd" id="2_4rqk5"]
+
+[node name="Heal" instance=ExtResource("1_eue4y")]
+script = ExtResource("2_4rqk5")
+action_name = "Heal"
