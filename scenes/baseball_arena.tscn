@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=26 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="1_woeuh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bthtlrcdwhbih" path="res://scenes/actions/swing_attack.tscn" id="3_h5k57"]
 [ext_resource type="PackedScene" uid="uid://7d8qn33nbseh" path="res://scenes/ui_layer.tscn" id="3_jtmev"]
 [ext_resource type="PackedScene" uid="uid://dqg0g4oc7fwke" path="res://scenes/actions/hit_and_run_attack.tscn" id="4_8b67c"]
+[ext_resource type="PackedScene" uid="uid://b5nchu1dgl5jd" path="res://scenes/actions/ricochet_swing_attack.tscn" id="5_v7fmd"]
 [ext_resource type="PackedScene" uid="uid://dcsq7s5u5wjtb" path="res://scenes/actions/throw_attack.tscn" id="5_woeuh"]
 [ext_resource type="PackedScene" uid="uid://ds7wsmky4owjy" path="res://scenes/actions/await_signal.tscn" id="7_cbia7"]
 [ext_resource type="PackedScene" uid="uid://7oecrvgo1kij" path="res://scenes/actions/heal.tscn" id="8_hnbne"]
@@ -99,6 +100,8 @@ state = 1
 gfx = NodePath("../../GFXManager/JohnnyBaseball")
 
 [node name="SwingAttack" parent="CharacterManager/JohnnyBaseball" instance=ExtResource("3_h5k57")]
+
+[node name="RicochetSwingAttack" parent="CharacterManager/JohnnyBaseball" instance=ExtResource("5_v7fmd")]
 
 [node name="HitAndRunAttack" parent="CharacterManager/JohnnyBaseball" instance=ExtResource("4_8b67c")]
 
@@ -243,6 +246,7 @@ autoplay = "default"
 [node name="UILayer" parent="." instance=ExtResource("3_jtmev")]
 
 [connection signal="affect_bases" from="CharacterManager/JohnnyBaseball/SwingAttack" to="CharacterManager" method="_run_those_on_base"]
+[connection signal="affect_bases" from="CharacterManager/JohnnyBaseball/RicochetSwingAttack" to="CharacterManager" method="_run_those_on_base"]
 [connection signal="action_selected" from="ActionManager" to="CharacterManager" method="_on_action_manager_action_selected"]
 
 [editable path="CharacterManager/JohnnyBaseball"]

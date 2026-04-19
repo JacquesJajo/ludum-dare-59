@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5nchu1dgl5jd"]
+
+[ext_resource type="PackedScene" uid="uid://bthtlrcdwhbih" path="res://scenes/actions/swing_attack.tscn" id="1_a4w6b"]
+[ext_resource type="Script" uid="uid://hofegmpi17fb" path="res://scenes/actions/ricochet_swing_attack.gd" id="2_eccv1"]
+
+[node name="RicochetSwingAttack" instance=ExtResource("1_a4w6b")]
+script = ExtResource("2_eccv1")
+action_name = "Ricochet Swing"

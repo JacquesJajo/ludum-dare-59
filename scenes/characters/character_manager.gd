@@ -55,6 +55,12 @@ func sort_initiative_desc(a: Character, b: Character) -> bool:
 		return false
 	return true
 
+func get_npc_list() -> Array[Character]:
+	var to_return: Array[Character] = []
+	for character: Character in character_list:
+		if character.is_npc:
+			to_return.append(character)
+	return to_return
 
 func _on_action_manager_action_selected(action: Action) -> void:
 	action_manager.action_to_execute = action

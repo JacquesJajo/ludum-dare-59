@@ -6,18 +6,15 @@ const SWING_SPEED: float = 512.0
 
 var saved_baseball: Baseball
 
+var buff_level: int
+
 func do_action() -> void:
-	var roll: int = randi_range(1, 20) + user.swing_bonus
-	if roll >= target.armour_class:
-		# TODO: more complex damage / to hit
-		target.take_damage(user.strength)
-	if roll >= CRITICAL:
-		critical = true
-	
+	buff_level = 0
 	var message: Array[String] = []
 	for ally: Character in user.ally_buffs:
 		if ally.signal_to_wait_for == action_name:
 			message.append(ally.character_name + " buffed your attack!")
+			buff_level += 1
 		ally.signal_to_wait_for = ""
 	if message.size() <= 0:
 		message.append("No buff signals received!")
@@ -45,9 +42,20 @@ func _swing_finished() -> void:
 	saved_baseball.move_complete.connect(_baseball_swung_back)
 	saved_baseball.move_sprite(target.gfx.global_position, SWING_SPEED)
 
+func modify_baseball() -> void:
+	pass
+
 func _baseball_swung_back() -> void:
 	saved_baseball.move_complete.disconnect(_baseball_swung_back)
 	saved_baseball.queue_free()
+	
+	var roll: int = randi_range(1, 20) + user.swing_bonus
+	if roll >= target.armour_class:
+		# TODO: more complex damage / to hit
+		target.take_damage(user.strength)
+	if roll >= CRITICAL:
+		critical = true
+	
 	user.gfx.move_complete.connect(_base_moved)
 	user.gfx.move_sprite(user.base_manager.bases[user.base_index + 1], 128.0)
 	affect_bases.emit(user)

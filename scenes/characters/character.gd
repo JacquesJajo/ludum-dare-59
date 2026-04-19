@@ -38,6 +38,8 @@ var initiative: int
 var health: int
 var magic: int
 
+var character_manager: CharacterManager
+
 @export var ally_to_buff: Character
 var ally_buffs: Array[Character]
 var signal_to_wait_for: String
@@ -46,6 +48,7 @@ var baseball_list: Array[Baseball]
 
 func _ready() -> void:
 	reset()
+	character_manager = get_parent() as CharacterManager
 
 func reset():
 	health = max_health
