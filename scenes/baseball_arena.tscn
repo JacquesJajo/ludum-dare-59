@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=24 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="1_woeuh"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://7d8qn33nbseh" path="res://scenes/ui_layer.tscn" id="3_jtmev"]
 [ext_resource type="PackedScene" uid="uid://dqg0g4oc7fwke" path="res://scenes/actions/hit_and_run_attack.tscn" id="4_8b67c"]
 [ext_resource type="PackedScene" uid="uid://dcsq7s5u5wjtb" path="res://scenes/actions/throw_attack.tscn" id="5_woeuh"]
+[ext_resource type="PackedScene" uid="uid://ds7wsmky4owjy" path="res://scenes/actions/await_signal.tscn" id="7_cbia7"]
 [ext_resource type="Script" uid="uid://bnssbpa08hulc" path="res://scripts/fielding_spots_manager.gd" id="9_bdoy6"]
 [ext_resource type="Script" uid="uid://2tk6o53m72bd" path="res://scenes/base_manager.gd" id="9_qrtu0"]
 [ext_resource type="PackedScene" uid="uid://bgpecv6xp6537" path="res://scenes/gfx_manager.tscn" id="10_p75ep"]
@@ -134,7 +135,7 @@ is_npc = true
 
 [node name="ThrowAttack" parent="CharacterManager/OtherGuy3" instance=ExtResource("5_woeuh")]
 
-[node name="Imp1" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+[node name="Imp1" parent="CharacterManager" node_paths=PackedStringArray("gfx", "ally_to_buff") instance=ExtResource("2_jtmev")]
 character_name = "Imp 1"
 initiative_bonus = 2
 strength = 3
@@ -143,10 +144,12 @@ swing_bonus = 2
 armour_class = 12
 state = 3
 gfx = NodePath("../../GFXManager/Imp1")
+ally_to_buff = NodePath("../JohnnyBaseball")
 
-[node name="ThrowAttack" parent="CharacterManager/Imp1" instance=ExtResource("5_woeuh")]
+[node name="AwaitSignal" parent="CharacterManager/Imp1" node_paths=PackedStringArray("ui_layer") instance=ExtResource("7_cbia7")]
+ui_layer = NodePath("../../../UILayer")
 
-[node name="Imp2" parent="CharacterManager" node_paths=PackedStringArray("gfx") instance=ExtResource("2_jtmev")]
+[node name="Imp2" parent="CharacterManager" node_paths=PackedStringArray("gfx", "ally_to_buff") instance=ExtResource("2_jtmev")]
 character_name = "Imp 2"
 initiative_bonus = 2
 strength = 3
@@ -156,8 +159,10 @@ armour_class = 12
 initial_base_index = 1
 state = 3
 gfx = NodePath("../../GFXManager/Imp2")
+ally_to_buff = NodePath("../JohnnyBaseball")
 
-[node name="ThrowAttack" parent="CharacterManager/Imp2" instance=ExtResource("5_woeuh")]
+[node name="AwaitSignal" parent="CharacterManager/Imp2" node_paths=PackedStringArray("ui_layer") instance=ExtResource("7_cbia7")]
+ui_layer = NodePath("../../../UILayer")
 
 [node name="ActionManager" parent="." node_paths=PackedStringArray("ui_layer", "gfx_manager") instance=ExtResource("2_8b67c")]
 ui_layer = NodePath("../UILayer")

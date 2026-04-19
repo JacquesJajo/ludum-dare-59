@@ -12,6 +12,20 @@ func do_action() -> void:
 		print("critical!")
 		critical = true
 	
+	var message: Array[String] = []
+	for ally: Character in user.ally_buffs:
+		if ally.signal_to_wait_for == action_name:
+			message.append(ally.character_name + " buffed your attack!")
+		ally.signal_to_wait_for = ""
+	if message.size() <= 0:
+		message.append("No buff signals received!")
+	show_message(message)
+	Dialogic.timeline_ended.connect(_message_shown)
+	
+func _message_shown() -> void:
+	Dialogic.timeline_ended.disconnect(_message_shown)
+	dialogue_timer.stop()
+	
 	# TODO: play ally buff animations, connect to signal
 	# and apply buffs then play user animations
 	user.ally_buffs.clear()

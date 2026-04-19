@@ -69,6 +69,7 @@ audio/channel_defaults={
 glossary/default_case_sensitive=true
 animations/join_default="Instant In"
 animations/leave_default="Instant Out"
+text/autoadvance_enabled=false
 
 [display]
 

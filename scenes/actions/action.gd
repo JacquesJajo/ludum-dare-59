@@ -21,11 +21,11 @@ func do_action() -> void:
 func _receive_signal() -> void:
 	pass
 
-func show_message(message: String) -> void:
+func show_message(message: Array[String]) -> void:
 	if Dialogic.current_timeline != null:
 		return
 	
-	var events: Array[String] = [message]
+	var events: Array[String] = message
 	var timeline: DialogicTimeline = DialogicTimeline.new()
 	timeline.events = events
 	Dialogic.start(timeline)
@@ -34,4 +34,4 @@ func show_message(message: String) -> void:
 
 
 func _on_dialogue_timer_timeout() -> void:
-	Dialogic.end_timeline()
+	Dialogic.end_timeline(true)

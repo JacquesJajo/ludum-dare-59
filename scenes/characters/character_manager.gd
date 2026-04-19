@@ -64,7 +64,7 @@ func _on_action_manager_action_selected(action: Action) -> void:
 	target_list.append_array(character_list)
 	target_list.remove_at(character_index)
 	
-	if action.user.is_npc:
+	if action.user.is_npc or !action.user.is_batter():
 		var non_npc_targets: Array[Character]
 		for character: Character in target_list:
 			if !character.is_npc:

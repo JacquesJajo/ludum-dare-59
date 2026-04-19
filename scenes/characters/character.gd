@@ -39,6 +39,7 @@ var magic: int
 
 @export var ally_to_buff: Character
 var ally_buffs: Array[Character]
+var signal_to_wait_for: String
 
 func _ready() -> void:
 	reset()
