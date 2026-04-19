@@ -46,6 +46,8 @@ var signal_to_wait_for: String
 
 var baseball_list: Array[Baseball]
 
+var dead: bool = false
+
 func _ready() -> void:
 	reset()
 	character_manager = get_parent() as CharacterManager
@@ -54,6 +56,12 @@ func reset():
 	health = max_health
 	magic = max_magic
 	base_index = initial_base_index
+	dead = false
+	gfx.show()
+	
+	for baseball: Baseball in baseball_list:
+		baseball.queue_free()
+	baseball_list.clear()
 
 func roll_initiative():
 	if state == State.PITCHER:
@@ -64,6 +72,11 @@ func roll_initiative():
 	
 func take_damage(damage: int):
 	health -= damage
+	
+	if health <= 0:
+		health = 0
+		gfx.hide()
+		dead = true
 
 func get_possible_actions() -> Array[Action]:
 	var actions: Array[Action] = []

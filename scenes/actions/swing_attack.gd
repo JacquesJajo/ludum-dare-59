@@ -2,6 +2,8 @@ extends Action
 
 class_name SwingAttack
 
+const baseball: PackedScene = preload("res://scenes/baseball.tscn")
+
 const SWING_SPEED: float = 512.0
 var speed_modifier: float = 1.0
 
@@ -39,8 +41,13 @@ func _swing_finished() -> void:
 	user.gfx.animation_finished.disconnect(_swing_finished)
 	user.gfx.play("default")
 	
-	saved_baseball = user.baseball_list.pop_front()
-	user.clear_baseball_list()
+	if user.baseball_list.size() > 0:
+		saved_baseball = user.baseball_list.pop_front()
+		user.clear_baseball_list()
+	else:
+		saved_baseball = baseball.instantiate()
+		user.gfx.get_parent().add_child(saved_baseball)
+		saved_baseball.global_position = user.gfx.get_hold_spot()
 	
 	modify_baseball()
 	saved_baseball.move_complete.connect(_baseball_swung_back)

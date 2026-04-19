@@ -16,6 +16,9 @@ const character_menu: PackedScene = preload("res://scenes/characters/character_m
 
 var character_index: int = 0
 
+signal player_defeat_signal
+signal player_victory_signal
+
 func _ready() -> void:
 	start()
 
@@ -50,6 +53,10 @@ func start() -> void:
 
 	$StartTimer.start()
 
+func reset() -> void:
+	for character: Character in character_list:
+		character.reset()
+
 func sort_initiative_desc(a: Character, b: Character) -> bool:
 	if a.initiative < b.initiative:
 		return false
@@ -62,6 +69,13 @@ func get_npc_list() -> Array[Character]:
 			to_return.append(character)
 	return to_return
 
+func get_pc_list() -> Array[Character]:
+	var to_return: Array[Character] = []
+	for character: Character in character_list:
+		if !character.is_npc:
+			to_return.append(character)
+	return to_return
+
 func _on_action_manager_action_selected(action: Action) -> void:
 	action_manager.action_to_execute = action
 	action_manager.action_to_execute.user = character_list[character_index]
@@ -69,6 +83,9 @@ func _on_action_manager_action_selected(action: Action) -> void:
 	var target_list: Array[Character]
 	target_list.append_array(character_list)
 	target_list.remove_at(character_index)
+	for potential_target: Character in target_list:
+		if potential_target.dead:
+			target_list.remove_at(target_list.find(potential_target))
 	
 	if action.user.is_npc or (!action.user.is_batter() and action is AwaitSignal):
 		var non_npc_targets: Array[Character]
@@ -98,8 +115,21 @@ func _action_completed() -> void:
 	
 	if character_index > character_list.size() - 1:
 		character_index = 0
-		
-	action_manager.select_action(character_list[character_index])
+	
+	while character_list[character_index].dead:
+		character_index += 1
+	
+		if character_index > character_list.size() - 1:
+			character_index = 0
+	
+	if player_victory():
+		print("win!")
+		player_victory_signal.emit()
+	elif player_defeat():
+		print("defeat!")
+		player_defeat_signal.emit()
+	else:
+		action_manager.select_action(character_list[character_index])
 	
 func _run_those_on_base(user: Character) -> void:
 	for character: Character in character_list:
@@ -112,3 +142,17 @@ func _run_those_on_base(user: Character) -> void:
 
 func _on_start_timer_timeout() -> void:
 	action_manager.select_action(character_list[character_index])
+
+func player_defeat() -> bool:
+	var pc_list: Array[Character] = get_pc_list()
+	for pc: Character in pc_list:
+		if pc.dead and pc.is_batter():
+			return true
+	return false
+	
+func player_victory() -> bool:
+	var npc_list: Array[Character] = get_npc_list()
+	for npc: Character in npc_list:
+		if !npc.dead:
+			return false
+	return true

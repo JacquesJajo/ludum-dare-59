@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://c14sp0441q430"]
+[gd_scene load_steps=28 format=3 uid="uid://c14sp0441q430"]
 
 [ext_resource type="PackedScene" uid="uid://h3qd5jinatct" path="res://scenes/characters/character_manager.tscn" id="1_hv8q3"]
+[ext_resource type="Script" uid="uid://66yy3cyhaw5h" path="res://scripts/baseball_arena.gd" id="1_lwfa2"]
 [ext_resource type="Texture2D" uid="uid://dvitnysavq2rr" path="res://sprites/background.png" id="1_woeuh"]
 [ext_resource type="PackedScene" uid="uid://cdrc7m04ob1a6" path="res://scenes/actions/action_manager.tscn" id="2_8b67c"]
 [ext_resource type="PackedScene" uid="uid://cyrxfrva0371v" path="res://scenes/characters/character.tscn" id="2_jtmev"]
@@ -76,6 +77,7 @@ animations = [{
 }]
 
 [node name="BaseballArena" type="Node2D"]
+script = ExtResource("1_lwfa2")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_woeuh")
@@ -249,6 +251,8 @@ autoplay = "default"
 
 [node name="UILayer" parent="." instance=ExtResource("3_jtmev")]
 
+[connection signal="player_defeat_signal" from="CharacterManager" to="." method="_on_player_defeat"]
+[connection signal="player_victory_signal" from="CharacterManager" to="." method="_on_player_victory"]
 [connection signal="affect_bases" from="CharacterManager/JohnnyBaseball/SwingAttack" to="CharacterManager" method="_run_those_on_base"]
 [connection signal="affect_bases" from="CharacterManager/JohnnyBaseball/RicochetSwingAttack" to="CharacterManager" method="_run_those_on_base"]
 [connection signal="affect_bases" from="CharacterManager/JohnnyBaseball/ExplosionAttack" to="CharacterManager" method="_run_those_on_base"]

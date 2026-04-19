@@ -17,7 +17,8 @@ func _on_attack_animation_finished() -> void:
 	user.gfx.play("default")
 	
 	baseball_instance = baseball.instantiate()
-	user.gfx.add_child(baseball_instance)
+	user.gfx.get_parent().add_child(baseball_instance)
+	baseball_instance.global_position = user.gfx.global_position
 	baseball_instance.move_complete.connect(_baseball_at_target)
 	baseball_instance.move_sprite(target.gfx.global_position, THROW_SPEED)
 
