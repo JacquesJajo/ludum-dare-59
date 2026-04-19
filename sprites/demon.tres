@@ -1,10 +1,10 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://7wbxsrc6y3lo"]
 
-[ext_resource type="Texture2D" uid="uid://cb07s60lb03ed" path="res://sprites/placeholders.png" id="1_yu540"]
+[ext_resource type="Texture2D" uid="uid://cfp7eepee84os" path="res://sprites/spritesheet.png" id="1_yu540"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfnxd"]
 atlas = ExtResource("1_yu540")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 64, 32, 32)
 
 [resource]
 animations = [{

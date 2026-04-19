@@ -209,6 +209,7 @@ autoplay = "default"
 sprite_frames = ExtResource("14_w5lw3")
 animation = &"default"
 autoplay = "default"
+frame_progress = 0.322832
 
 [node name="Imp2" parent="GFXManager" instance=ExtResource("11_owi6g")]
 sprite_frames = ExtResource("14_w5lw3")
