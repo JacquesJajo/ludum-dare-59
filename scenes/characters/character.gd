@@ -37,6 +37,9 @@ var initiative: int
 var health: int
 var magic: int
 
+@export var ally_to_buff: Character
+var ally_buffs: Array[Character]
+
 func _ready() -> void:
 	reset()
 

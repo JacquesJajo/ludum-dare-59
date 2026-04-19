@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds7wsmky4owjy"]
+
+[ext_resource type="PackedScene" uid="uid://3kundwbkrnh2" path="res://scenes/actions/action.tscn" id="1_o72mp"]
+[ext_resource type="Script" uid="uid://bv0dt4xvubtuf" path="res://scenes/actions/await_signal.gd" id="2_bf03o"]
+
+[node name="AwaitSignal" instance=ExtResource("1_o72mp")]
+script = ExtResource("2_bf03o")
+action_name = "Await Signal"

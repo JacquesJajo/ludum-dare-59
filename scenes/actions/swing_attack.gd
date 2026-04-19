@@ -12,6 +12,10 @@ func do_action() -> void:
 		print("critical!")
 		critical = true
 	
+	# TODO: play ally buff animations, connect to signal
+	# and apply buffs then play user animations
+	user.ally_buffs.clear()
+	
 	user.gfx.play("swing")
 	user.gfx.animation_finished.connect(_swing_finished)
 
