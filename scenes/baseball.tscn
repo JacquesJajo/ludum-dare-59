@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://djp3au30st8a1"]
+
+[ext_resource type="PackedScene" uid="uid://woop0y3j8ulp" path="res://scenes/character_sprite.tscn" id="1_uu2yc"]
+[ext_resource type="Texture2D" uid="uid://cpuxnhu4q6kdn" path="res://sprites/baseball.png" id="2_me4rg"]
+[ext_resource type="Script" uid="uid://bn8nujpso2odt" path="res://scripts/baseball.gd" id="3_uraqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uraqv"]
+atlas = ExtResource("2_me4rg")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_274vh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uraqv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Baseball" instance=ExtResource("1_uu2yc")]
+sprite_frames = SubResource("SpriteFrames_274vh")
+animation = &"default"
+autoplay = "default"
+script = ExtResource("3_uraqv")
+face_centre = false

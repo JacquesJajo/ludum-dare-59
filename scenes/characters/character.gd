@@ -41,6 +41,8 @@ var magic: int
 var ally_buffs: Array[Character]
 var signal_to_wait_for: String
 
+var baseball_list: Array[Baseball]
+
 func _ready() -> void:
 	reset()
 
@@ -81,3 +83,8 @@ func is_on_base() -> bool:
 	
 func is_fielder() -> bool:
 	return state == State.FIELDER
+	
+func clear_baseball_list() -> void:
+	for baseball: Baseball in baseball_list:
+		baseball.queue_free()
+	baseball_list.clear()

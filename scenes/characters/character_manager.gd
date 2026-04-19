@@ -67,6 +67,8 @@ func _on_action_manager_action_selected(action: Action) -> void:
 	if action.user.is_npc or !action.user.is_batter():
 		var non_npc_targets: Array[Character]
 		for character: Character in target_list:
+			if action.user.is_pitcher() and !character.is_batter():
+				continue
 			if !character.is_npc:
 				non_npc_targets.append(character)
 				

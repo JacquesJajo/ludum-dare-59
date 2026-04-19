@@ -197,10 +197,14 @@ position = Vector2(128, 0)
 
 [node name="GFXManager" parent="." instance=ExtResource("10_p75ep")]
 
-[node name="JohnnyBaseball" parent="GFXManager" instance=ExtResource("11_owi6g")]
+[node name="JohnnyBaseball" parent="GFXManager" node_paths=PackedStringArray("hold_spot") instance=ExtResource("11_owi6g")]
 sprite_frames = SubResource("SpriteFrames_jjdn4")
 animation = &"swing"
 autoplay = "default"
+hold_spot = NodePath("HoldSpot")
+
+[node name="HoldSpot" type="Node2D" parent="GFXManager/JohnnyBaseball"]
+position = Vector2(16, 0)
 
 [node name="OtherGuy1" parent="GFXManager" instance=ExtResource("11_owi6g")]
 sprite_frames = ExtResource("13_jjdn4")
