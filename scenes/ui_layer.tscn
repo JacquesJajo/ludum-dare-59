@@ -6,8 +6,10 @@
 script = ExtResource("1_w83ab")
 
 [node name="DebugList" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 71.0
+offset_bottom = 90.0
 
 [node name="Characters" type="Label" parent="DebugList"]
 layout_mode = 2

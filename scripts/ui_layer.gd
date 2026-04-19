@@ -6,7 +6,7 @@ var characters_label: Label
 
 func populate_characters_label(character_list: Array[Character]):
 	characters_label = $DebugList/Characters
-	characters_label.text = "Characters:\n"
+	characters_label.text = "Order / Name / HP:\n"
 	
 	var i: int = 1
 	for character: Character in character_list:

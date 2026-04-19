@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://mtxx4a4rhmka"]
+
+[ext_resource type="PackedScene" uid="uid://c14sp0441q430" path="res://scenes/baseball_arena.tscn" id="1_tgbod"]
+[ext_resource type="SpriteFrames" uid="uid://byom3w3cwiuhi" path="res://sprites/pink_demon.tres" id="2_c0nam"]
+
+[node name="TougherArena" instance=ExtResource("1_tgbod")]
+
+[node name="RedDemon1" parent="CharacterManager" index="2"]
+character_name = "Pink Demon 1"
+initiative_bonus = 2
+strength = 2
+max_health = 14
+
+[node name="OtherGuy1" parent="GFXManager" index="1"]
+sprite_frames = ExtResource("2_c0nam")
+
+[editable path="CharacterManager/JohnnyBaseball"]

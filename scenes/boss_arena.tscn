@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://0x1cmo7ajuck"]
+
+[ext_resource type="PackedScene" uid="uid://c14sp0441q430" path="res://scenes/baseball_arena.tscn" id="1_lpckb"]
+[ext_resource type="SpriteFrames" uid="uid://byom3w3cwiuhi" path="res://sprites/pink_demon.tres" id="2_5gcvm"]
+[ext_resource type="SpriteFrames" uid="uid://b48xis31514ln" path="res://sprites/green_demon.tres" id="2_n4yxd"]
+
+[node name="BossArena" instance=ExtResource("1_lpckb")]
+
+[node name="RedDemon1" parent="CharacterManager" index="2"]
+character_name = "Green Demon 1"
+initiative_bonus = 4
+strength = 4
+max_health = 16
+
+[node name="RedDemon2" parent="CharacterManager" index="3"]
+character_name = "Pink Demon 2"
+initiative_bonus = 2
+strength = 2
+max_health = 14
+
+[node name="RedDemon3" parent="CharacterManager" index="4"]
+character_name = "Pink Demon 3"
+initiative_bonus = 2
+strength = 2
+max_health = 14
+
+[node name="OtherGuy1" parent="GFXManager" index="1"]
+sprite_frames = ExtResource("2_n4yxd")
+
+[node name="OtherGuy2" parent="GFXManager" index="2"]
+sprite_frames = ExtResource("2_5gcvm")
+
+[node name="OtherGuy3" parent="GFXManager" index="3"]
+sprite_frames = ExtResource("2_5gcvm")
+
+[editable path="CharacterManager/JohnnyBaseball"]

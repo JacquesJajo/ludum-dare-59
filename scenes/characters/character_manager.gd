@@ -65,7 +65,7 @@ func sort_initiative_desc(a: Character, b: Character) -> bool:
 func get_npc_list() -> Array[Character]:
 	var to_return: Array[Character] = []
 	for character: Character in character_list:
-		if character.is_npc:
+		if character.is_npc and !character.dead:
 			to_return.append(character)
 	return to_return
 
@@ -152,7 +152,4 @@ func player_defeat() -> bool:
 	
 func player_victory() -> bool:
 	var npc_list: Array[Character] = get_npc_list()
-	for npc: Character in npc_list:
-		if !npc.dead:
-			return false
-	return true
+	return npc_list.size() <= 0

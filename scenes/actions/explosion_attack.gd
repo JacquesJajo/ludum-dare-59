@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		
 	for npc: Character in potential_hits:
 		if explosion_instance.global_position.distance_to(npc.gfx.global_position) < explosion_instance.get_pixel_radius():
-			npc.take_damage(user.strength * EXPLOSION_DAMAGE_MOD)
+			npc.take_damage(user.strength + EXPLOSION_DAMAGE_MOD)
 			potential_hits.remove_at(potential_hits.find(npc))
 
 func _baseball_swung_back() -> void:

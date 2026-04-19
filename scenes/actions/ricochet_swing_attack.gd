@@ -9,10 +9,7 @@ func _baseball_swung_back() -> void:
 	if buff_level > 0 and new_targets.size() > 1:
 		buff_level -= 1
 		
-		var roll: int = randi_range(1, 20) + user.swing_bonus
-		if roll >= target.armour_class:
-			# TODO: more complex damage / to hit
-			target.take_damage(user.strength)
+		target.take_damage(user.strength)
 		
 		new_targets.remove_at(new_targets.find(target))
 		target = new_targets[randi_range(0, new_targets.size() - 1)]
@@ -24,9 +21,8 @@ func _baseball_swung_back() -> void:
 		saved_baseball.queue_free()
 		
 		var roll: int = randi_range(1, 20) + user.swing_bonus
-		if roll >= target.armour_class:
-			# TODO: more complex damage / to hit
-			target.take_damage(user.strength)
+
+		target.take_damage(user.strength)
 		if roll >= CRITICAL:
 			critical = true
 		

@@ -1,6 +1,10 @@
 extends Node2D
 
+class_name Arena
+
 @onready var character_manager: CharacterManager = $CharacterManager
+
+signal next_level
 
 func _on_player_defeat() -> void:
 	character_manager.reset()
@@ -8,4 +12,4 @@ func _on_player_defeat() -> void:
 
 
 func _on_player_victory() -> void:
-	pass # Replace with function body.
+	next_level.emit()
